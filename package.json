@@ -25,11 +25,18 @@
     "typecheck": "tsc --noEmit",
     "release": "semantic-release"
   },
+  "peerDependencies": {
+    "@material/material-color-utilities": "^0.3.0",
+    "unocss": "^0.61.5"
+  },
+  "dependencies": {
+    "@material/material-color-utilities": "^0.3.0",
+    "unocss": "^0.61.5"
+  },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@eslint/js": "^9.7.0",
-    "@material/material-color-utilities": "^0.3.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "cz-conventional-changelog": "^3.3.0",
@@ -42,7 +49,6 @@
     "tsup": "^8.2.0",
     "typescript": "^5.5.3",
     "typescript-eslint": "8.0.0-alpha.46",
-    "unocss": "^0.61.5",
     "vue-eslint-parser": "^9.4.3"
   },
   "packageManager": "pnpm@9.0.0",

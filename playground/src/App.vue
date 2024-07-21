@@ -2,10 +2,20 @@
 </script>
 
 <template>
-  <div class="text-blue text-secondary">
-    Uno CSS Preset for Material
+  <div class="dark">
+    <div class="">
+      <span class="m-text-primary">Uno CSS Preset for Material</span>
+    </div>
+  </div>
+  <div class="light">
+    <div class="">
+      <span class="m-text-primary">Uno CSS Preset for Material</span>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.dark {
+  background-color: #000;
+}
 </style>

@@ -92,6 +92,16 @@ const buildTextShortcuts = (): Shortcut<Record<string, ThemeScheme>> => {
   ]
 }
 
+const buildBackgroundShortcuts = (): Shortcut<Record<string, ThemeScheme>> => {
+  return [
+    /^m-bg-(?!.*(shadow|outline|outlineVariant)).*$/,
+    ([shortcut]) => {
+      const key = shortcut.replace('m-bg-', '')
+      return `bg-light-${key} dark:bg-dark-${key}`
+    }
+  ]
+}
+
 const presetMaterial = definePreset(() => {
   const theme = themeFromSourceColor(argbFromHex('#65558F'), [{ name: 'abc', value: argbFromHex('#64458F'), blend: false }])
 
@@ -100,14 +110,11 @@ const presetMaterial = definePreset(() => {
   const themeScheme = buildTheme({light: light.toJSON(), dark: dark.toJSON()})
   const colorScheme = buildColorScheme(themeScheme)
 
-  const textShortcuts = buildTextShortcuts()
-
-  console.log(textShortcuts)
-
   return {
     name: 'material-preset',
     shortcuts: [
-      textShortcuts
+      buildTextShortcuts(),
+      buildBackgroundShortcuts(),
     ],
     theme: {
       colors: themeScheme,

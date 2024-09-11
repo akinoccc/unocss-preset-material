@@ -4,6 +4,7 @@ import { buildTextShortcuts } from "./shortcuts/text";
 import {buildBackgroundShortcuts} from "./shortcuts/background";
 import {buildTheme} from "./theme/defaultTheme";
 import {buildCssVar} from "./preflights/cssVar";
+import {buildDivider} from "./rules";
 
 const presetMaterial = definePreset(() => {
   const theme = themeFromSourceColor(argbFromHex('#65558F'), [{ name: 'abc', value: argbFromHex('#64458F'), blend: false }])
@@ -17,6 +18,9 @@ const presetMaterial = definePreset(() => {
     shortcuts: [
       buildTextShortcuts(),
       buildBackgroundShortcuts(),
+    ],
+    rules: [
+      ...buildDivider()
     ],
     theme: {
       colors: themeScheme,

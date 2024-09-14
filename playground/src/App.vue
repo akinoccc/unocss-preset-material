@@ -7,7 +7,7 @@ const isDark = ref(true)
 <template>
   <div :class="{'dark': isDark}">
     <div class="m-bg-surface">
-      <span class="md-text-primary">Uno CSS Preset for Material</span>
+      <span class="m-text-primary">Uno CSS Preset for Material</span>
     </div>
   </div>
   <button @click="isDark = !isDark">
@@ -23,6 +23,16 @@ const isDark = ref(true)
     <div class="m-divider-vertical-90px" />
     <div class="m-divider-vertical-inset" />
     <div class="m-divider-vertical-middle-inset" />
+  </div>
+
+  <div>
+    <div class="m-badge-dot" />
+    <div class="m-badge">
+      3
+    </div>
+    <div class="m-badge">
+      323
+    </div>
   </div>
 </template>
 

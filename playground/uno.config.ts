@@ -13,7 +13,16 @@ import presetMaterial from 'unocss-preset-material'
 export default defineConfig({
   shortcuts: [],
   variants: [],
-  theme: {},
+  theme: {
+    colors: {
+      brand: {
+        DEFAULT: '#65558F',
+        dark: '#65558F',
+        light: '#65558F',
+      },
+    },
+
+  },
   presets: [
     presetUno(),
     presetAttributify(),

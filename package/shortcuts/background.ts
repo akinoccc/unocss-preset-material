@@ -1,7 +1,7 @@
 import {Shortcut} from "unocss";
-import {ThemeScheme} from "../types/theme";
+import {Theme} from "../theme/types";
 
-export const buildBackgroundShortcuts = (): Shortcut<Record<string, ThemeScheme>> => {
+export const buildBackgroundShortcuts = (): Shortcut<Theme> => {
   return [
     /^m-bg-(?!.*(shadow|outline|outlineVariant)).*$/,
     ([shortcut]) => {

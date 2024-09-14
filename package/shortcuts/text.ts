@@ -1,7 +1,7 @@
 import {Shortcut} from "unocss";
-import {ThemeScheme} from "../types/theme";
+import {Theme} from "../theme/types";
 
-export const buildTextShortcuts = (): Shortcut<Record<string, ThemeScheme>> => {
+export const buildTextShortcuts = (): Shortcut<Theme> => {
   return [
     /^m-text-(?![^on].*-container$).*/,
     ([shortcut]) => {

@@ -1,34 +1,28 @@
-import { argbFromHex, themeFromSourceColor } from '@material/material-color-utilities';
-import { definePreset } from 'unocss';
-import { buildTextShortcuts } from "./shortcuts/text";
+
+import * as theme from "./theme";
+import {definePreset} from "unocss";
+import {buildTextShortcuts} from "./shortcuts/text";
 import {buildBackgroundShortcuts} from "./shortcuts/background";
-import {buildTheme} from "./theme/defaultTheme";
-import {buildCssVar} from "./preflights/cssVar";
-import {buildDivider} from "./rules";
+import {buildColorCssVar} from "./preflights/colors";
+import {buildBadge, buildDivider} from "./rules";
+import {Theme} from "./theme/types";
 
-const presetMaterial = definePreset(() => {
-  const theme = themeFromSourceColor(argbFromHex('#65558F'), [{ name: 'abc', value: argbFromHex('#64458F'), blend: false }])
-
-  // Get the theme from a hex color
-  const { light, dark } = theme.schemes
-  const themeScheme = buildTheme({light: light.toJSON(), dark: dark.toJSON()})
-
-  return {
+export const presetMaterial = definePreset<any, Theme>(
+  () => ({
     name: 'material-preset',
     shortcuts: [
       buildTextShortcuts(),
       buildBackgroundShortcuts(),
     ],
     rules: [
-      ...buildDivider()
+      ...buildDivider(),
+      ...buildBadge(),
     ],
-    theme: {
-      colors: themeScheme,
-    },
+    theme,
     preflights: [
-      ...buildCssVar()
+      buildColorCssVar()
     ]
-  }
-})
+  })
+)
 
 export default presetMaterial

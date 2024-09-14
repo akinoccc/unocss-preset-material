@@ -1,7 +1,8 @@
 import {Rule} from "unocss";
 import {UNIT} from "../constants/unit";
+import {Theme} from "../theme/types";
 
-export const buildDivider = (): Rule[] => {
+export const buildDivider = (): Rule<Theme>[] => {
   return [
     // Horizontal divider
     [

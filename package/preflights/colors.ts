@@ -1,7 +1,7 @@
-import {Preflight} from "unocss";
-import {Theme, ThemeColors} from "../theme/types";
-import {argbFromHex, hexFromArgb, themeFromSourceColor} from "@material/material-color-utilities";
-import {covertToKebabCase} from "../utils";
+import { argbFromHex, hexFromArgb, themeFromSourceColor } from "@material/material-color-utilities";
+import { Preflight } from "unocss";
+import { Theme, ThemeColors } from "../theme/types";
+import { covertToKebabCase } from "../utils";
 
 export const buildColorCssVar = (): Preflight<Theme> => {
   return {
@@ -28,17 +28,23 @@ export const buildColorCssVar = (): Preflight<Theme> => {
         light[key] = lightValue
         dark[key] = darkValue
       }
-      const lightColorVars = Object.entries(light).map(item => `--md-color-${item[0]}: ${item[1]}`)
-      const darkColorVars = Object.entries(dark).map(item => `--md-color-${item[0]}: ${item[1]}`)
+      const lightColorVars = Object.entries(light).map(item => `--md-color-${item[0]}: ${item[1]}`).join(';')
+      const darkColorVars = Object.entries(dark).map(item => `--md-color-${item[0]}: ${item[1]}`).join(';')
 
       return `
-        * {
-          ${ lightColorVars.join(';') }
+        :root {
+          ${ lightColorVars }
         }
         @media (prefers-color-scheme: dark) {
-          * {
-            ${ darkColorVars.join(';') }
+          :root {
+            ${ darkColorVars }
           }
+        }
+        .dark {
+          ${ darkColorVars }
+        }
+        html[data-theme="dark"] {
+          ${ darkColorVars }
         }
       `
     }

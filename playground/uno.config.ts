@@ -11,7 +11,15 @@ import {
 import presetMaterial from 'unocss-preset-material'
 
 export default defineConfig({
-  shortcuts: [],
+  shortcuts: [
+    {
+      'fc': 'flex justify-center items-center',
+      'fac': 'flex items-center',
+      'fjc': 'flex justify-center',
+      'fvc': 'flex items-center',
+      'fvjc': 'flex items-center justify-center',
+    }
+  ],
   variants: [],
   theme: {
     colors: {

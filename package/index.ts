@@ -1,11 +1,11 @@
 
+import { definePreset } from "unocss";
+import { buildColorCssVar } from "./preflights/colors";
+import { buildBadge, buildDivider } from "./rules";
+import { buildBackgroundShortcuts } from "./shortcuts/background";
+import { buildTextShortcuts } from "./shortcuts/text";
 import * as theme from "./theme";
-import {definePreset} from "unocss";
-import {buildTextShortcuts} from "./shortcuts/text";
-import {buildBackgroundShortcuts} from "./shortcuts/background";
-import {buildColorCssVar} from "./preflights/colors";
-import {buildBadge, buildDivider} from "./rules";
-import {Theme} from "./theme/types";
+import { Theme } from "./theme/types";
 
 export const presetMaterial = definePreset<any, Theme>(
   () => ({
@@ -21,7 +21,8 @@ export const presetMaterial = definePreset<any, Theme>(
     theme,
     preflights: [
       buildColorCssVar()
-    ]
+    ],
+    variants: []
   })
 )
 

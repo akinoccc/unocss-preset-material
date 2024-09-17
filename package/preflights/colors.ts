@@ -1,7 +1,7 @@
-import { argbFromHex, hexFromArgb, themeFromSourceColor } from "@material/material-color-utilities";
+import { argbFromHex, rgbaFromArgb, themeFromSourceColor } from "@material/material-color-utilities";
 import { Preflight } from "unocss";
 import { Theme, ThemeColors } from "../theme/types";
-import { covertToKebabCase } from "../utils";
+import { covertToKebabCase } from "../utils/utils";
 
 export const buildColorCssVar = (): Preflight<Theme> => {
   return {
@@ -20,13 +20,13 @@ export const buildColorCssVar = (): Preflight<Theme> => {
       const light = {} as ThemeColors
       const dark = {} as ThemeColors
       for (const [key, value] of Object.entries(mdThemeLight)) {
+        const {r: lr, g: lg, b: lb} = rgbaFromArgb(value)
+        const {r: dr, g: dg, b: db} = rgbaFromArgb(mdThemeDark[key])
+
         const kebabCaseKey = covertToKebabCase(key)
-        const lightValue = hexFromArgb(value)
-        const darkValue = hexFromArgb(mdThemeDark[key])
-        light[kebabCaseKey] = lightValue
-        dark[kebabCaseKey] = darkValue
-        light[key] = lightValue
-        dark[key] = darkValue
+
+        light[kebabCaseKey] = [lr, lg, lb].join(',')
+        dark[kebabCaseKey] = [dr, dg, db].join(',')
       }
       const lightColorVars = Object.entries(light).map(item => `--md-color-${item[0]}: ${item[1]}`).join(';')
       const darkColorVars = Object.entries(dark).map(item => `--md-color-${item[0]}: ${item[1]}`).join(';')

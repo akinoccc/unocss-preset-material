@@ -1,7 +1,7 @@
 
 import { definePreset } from "unocss";
 import { buildColorCssVar } from "./preflights/colors";
-import { buildBadge, buildDivider } from "./rules";
+import { buildBadge, buildDivider, buttonRules } from "./rules";
 import { buildBackgroundShortcuts } from "./shortcuts/background";
 import { buildTextShortcuts } from "./shortcuts/text";
 import * as theme from "./theme";
@@ -17,6 +17,7 @@ export const presetMaterial = definePreset<any, Theme>(
     rules: [
       ...buildDivider(),
       ...buildBadge(),
+      ...buttonRules,
     ],
     theme,
     preflights: [

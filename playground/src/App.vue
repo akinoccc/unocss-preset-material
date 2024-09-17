@@ -6,7 +6,7 @@ const isDark = ref(true)
 
 <template>
   <div
-    class="bg-background"
+    class="bg-surface"
     :class="{'dark': isDark}"
   >
     <div class="bg-surface">
@@ -33,6 +33,18 @@ const isDark = ref(true)
         323
       </div>
     </div>
+
+    <div class="fac gap-4 py-4">
+      <button class="m-button">
+        Button
+      </button>
+      <button
+        class="m-button"
+        disabled
+      >
+        Button
+      </button>
+    </div>
   </div>
   <button @click="isDark = !isDark">
     Change Theme
@@ -40,4 +52,5 @@ const isDark = ref(true)
 </template>
 
 <style scoped>
+
 </style>

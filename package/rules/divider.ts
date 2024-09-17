@@ -1,32 +1,32 @@
-import {Rule} from "unocss";
-import {UNIT} from "../constants/unit";
-import {Theme} from "../theme/types";
+import { Rule } from "unocss";
+import { UNIT } from "../constants/unit";
+import { Theme } from "../theme/types";
 
 export const buildDivider = (): Rule<Theme>[] => {
   return [
     // Horizontal divider
     [
       new RegExp(`^m-divider(-\\d+(${UNIT}))?$`),
-      ([, w]) => ({
+      ([, w], { theme }) => ({
         width: w ? `${w.replace('-', '')}` : '100%',
         height: '1px',
         margin: '1rem auto',
-        background: 'var(--md-color-outline-variant)'
+        background: theme.colors.outlineVariant
       })
     ],
     [
       /^m-divider(-middle)?-inset/,
-      ([, isMiddle]) => ({
+      ([, isMiddle], { theme }) => ({
         width: `calc(100% - ${ isMiddle ? '32px' : '16px' })`,
         height: '1px',
         margin: '1rem auto',
-        background: 'var(--md-color-outline-variant)'
+        background: theme.colors.outlineVariant
       })
     ],
     // Vertical divider
     [
       new RegExp(`^m-divider-vertical(-\\d+(${UNIT}))?$`),
-      ([, h]) => ({
+      ([, h], { theme }) => ({
         position: 'relative',
         top: '50%',
         display: 'inline-block',
@@ -36,12 +36,12 @@ export const buildDivider = (): Rule<Theme>[] => {
         margin: '0 1rem',
         transform: 'translateY(-50%)',
         'vertical-align': 'top',
-        background: `var(--md-color-outline-variant)`
+        background: theme.colors.outlineVariant
       })
     ],
     [
       /^m-divider-vertical(-middle)?-inset/,
-      ([, isMiddle]) => ({
+      ([, isMiddle], { theme }) => ({
         position: 'relative',
         top: '50%',
         display: 'inline-block',
@@ -51,7 +51,7 @@ export const buildDivider = (): Rule<Theme>[] => {
         margin: '0 1rem',
         transform: 'translateY(-50%)',
         'vertical-align': 'top',
-        background: 'var(--md-color-outline-variant)'
+        background: theme.colors.outlineVariant
       })
     ],
   ]
